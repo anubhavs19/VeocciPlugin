@@ -3,6 +3,7 @@
 const xcode = require('xcode'),
     fs = require('fs'),
     path = require('path');
+    const chalk = require('chalk');
 
 module.exports = function(context) {
     if(process.length >=5 && process.argv[1].indexOf('cordova') == -1) {
@@ -25,7 +26,7 @@ module.exports = function(context) {
             if (stat.isDirectory() && rec){
                 fromDir(filename,filter); //recurse
             }
-
+            // console.log(filename)
             if (filename.indexOf(filter)>=0) {
                 if (multiple) {
                     resultFiles.push(filename);
@@ -88,18 +89,21 @@ module.exports = function(context) {
     addRunpathSearchBuildProperty(myProj, "Release");
 
     // unquote (remove trailing ")
-    var projectName = myProj.getFirstTarget().firstTarget.name.substr(1);
-    // var projectName = myProj.getFirstTarget().firstTarget.name;
-    projectName = projectName.substr(1, projectName.length-2); //Removing the char " at beginning and the end.
-    // projectName = projectName.replace(/"/g, '');
+    // var projectName = myProj.getFirstTarget().firstTarget.name.substr(1);
+    var projectName = myProj.getFirstTarget().firstTarget.name;
+    // projectName = projectName.substr(1, projectName.length-2); //Removing the char " at beginning and the end.
+    projectName = projectName.replace(/"/g, '');
 
     const groupName = 'Embed Frameworks ' + context.opts.plugin.id;
+    console.log(chalk.red(groupName))
     const pluginPathInPlatformIosDir = projectName + '/Plugins/' + context.opts.plugin.id;
 
+    console.log('test', process.cwd());
     process.chdir('./platforms/ios');
-    console.log('test');
-    console.log(myProj.getFirstTarget().firstTarget.name);
-    const frameworkFilesToEmbed = fromDir(pluginPathInPlatformIosDir ,'.framework', false, true);
+    console.log('test2', process.cwd());
+    console.log(myProj.getFirstTarget().firstTarget.name, pluginPathInPlatformIosDir);
+    const frameworkFilesToEmbed = fromDir(pluginPathInPlatformIosDir, '.framework', false, true);
+    console.log('test3', frameworkFilesToEmbed)
     process.chdir('../../');
 
     if(!frameworkFilesToEmbed.length) return;
@@ -122,6 +126,7 @@ module.exports = function(context) {
             fileRef:fileRef,
             group:groupName
         };
+        console.log(file)
         myProj.addToPbxBuildFileSection(file);
 
 
@@ -138,5 +143,5 @@ module.exports = function(context) {
     }
 
     fs.writeFileSync(projectPath, myProj.writeSync());
-    console.log('Embedded Frameworks In ' + context.opts.plugin.id);
+    console.log('Embedded Frameworks In22 ' + context.opts.plugin.id);
 };

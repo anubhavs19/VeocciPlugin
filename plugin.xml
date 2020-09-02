@@ -32,7 +32,7 @@
         <source-file src="src/ios/NSData+hexa.m" />
         <header-file src="src/ios/nmeaApi.h" />
         <source-file src="src/ios/libnmea-universal.a" framework="true" />
-        <framework src="src/ios/RIWSFramework.framework" custom="true" embed="true" />
+        <framework src="src/ios/RIWSFramework.framework" custom="true"/>
         <framework src="QuartzCore.framework" />
         <framework src="ExternalAccessory.framework" />
         <framework src="SystemConfiguration.framework" />
