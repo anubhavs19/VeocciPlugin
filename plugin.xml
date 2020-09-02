@@ -40,6 +40,6 @@
         <framework src="CoreLocation.framework" />
         <framework src="AVFoundation.framework" />
         <framework src="UIKit.framework" />
-        <hook type="before_build" src="hooks/embedframework/addEmbedded.js" />
+        <hook type="after_platform_add" src="hooks/embedframework/addEmbedded.js" />
     </platform>
 </plugin>
