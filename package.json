@@ -1,5 +1,5 @@
 {
-  "name": "riws",
+  "name": "com.indmexaviation.riws",
   "version": "1.0.14",
   "description": "RIWS Plugin",
   "cordova": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KNETWORKS-IN/VeocciPlugin.git"
+    "url": "git+https://github.com/anubhavs19/VeocciPlugin.git"
   },
   "keywords": [
     "riws",
@@ -25,7 +25,7 @@
   ],
   "author": "INDMEXAviation",
   "bugs": {
-    "url": "https://github.com/KNETWORKS-IN/VeocciPlugin/issues"
+    "url": "https://github.com/anubhavs19/VeocciPlugin/issues"
   },
-  "homepage": "https://github.com/KNETWORKS-IN/VeocciPlugin#readme"
+  "homepage": "https://github.com/anubhavs19/VeocciPlugin#readme"
 }
